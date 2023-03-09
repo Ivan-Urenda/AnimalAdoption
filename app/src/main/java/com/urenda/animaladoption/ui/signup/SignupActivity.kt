@@ -34,18 +34,26 @@ class SignupActivity: AppCompatActivity() {
         //Signup button
         btnSignup.setOnClickListener() {
 
-            var pass1 = passwordField.text.toString()
-            var pass2 = confirmPassField.text.toString()
-            var email = emailField.text.toString()
-
-            if (pass1.equals(pass2))
+            if (emailField.text.isNotEmpty() && passwordField.text.isNotEmpty() && confirmPassField.text.isNotEmpty())
             {
-                createAccount(email, pass1)
+                var pass1 = passwordField.text.toString()
+                var pass2 = confirmPassField.text.toString()
+                var email = emailField.text.toString()
+
+                if (pass1.equals(pass2))
+                {
+                    createAccount(email, pass1)
+                }
+                else
+                {
+                    Toast.makeText(baseContext, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
+                }
             }
             else
             {
-                Toast.makeText(baseContext, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
+                Toast.makeText(baseContext, "Uno o más campos vacíos", Toast.LENGTH_SHORT).show()
             }
+
         }
 
         //Login button

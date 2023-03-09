@@ -30,6 +30,10 @@
         <activity android:name=".ui.signup.SignupActivity">
 
         </activity>
+
+        <activity android:name=".ui.forgot_pass.Forgot_pass_Activity">
+
+        </activity>
     </application>
 
 </manifest>
