@@ -34,6 +34,10 @@
         <activity android:name=".ui.forgot_pass.Forgot_pass_Activity">
 
         </activity>
+
+        <activity android:name=".ui.addAnimal.AddAnimalActivity">
+
+        </activity>
     </application>
 
 </manifest>

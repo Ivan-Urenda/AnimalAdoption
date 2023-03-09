@@ -74,7 +74,7 @@ class SignupActivity: AppCompatActivity() {
 
             if (task.isSuccessful)
             {
-                Toast.makeText(baseContext, "Cuenta creada con exito", Toast.LENGTH_SHORT).show()
+                sendEmailVerification()
             }
             else
             {
@@ -89,5 +89,21 @@ class SignupActivity: AppCompatActivity() {
         val loginActivity = Intent(this, LoginActivity::class.java)
         startActivity(loginActivity)
         this.finish();
+    }
+
+    private fun sendEmailVerification() {
+        val user = firebaseAuth.currentUser
+
+        user!!.sendEmailVerification().addOnCompleteListener(this) {  task ->
+            if (task.isSuccessful)
+            {
+                Toast.makeText(baseContext, "Correo de verificación enviado", Toast.LENGTH_SHORT).show()
+                LogInActivity()
+            }
+            else
+            {
+                Toast.makeText(baseContext, "Ha ocurrido un error al enviar el correo de verificación", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }
