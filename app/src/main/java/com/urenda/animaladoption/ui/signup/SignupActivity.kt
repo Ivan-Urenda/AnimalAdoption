@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -22,11 +23,17 @@ class SignupActivity: AppCompatActivity() {
         setContentView(R.layout.activity_signup)
         this.setTitle("Registrarse")
 
+        //Turn off dark mode
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+        //Initialize the variable to be able to use it
         firebaseAuth = Firebase.auth
 
+        //Declaration of buttons
         val btnSignup: Button = findViewById(R.id.btn_createAccount)
         val btnLogin: Button = findViewById(R.id.loginAccountLink)
 
+        //Declaration fields
         val emailField: TextView = findViewById(R.id.newEmailField)
         val passwordField: TextView = findViewById(R.id.newPasswordField)
         val confirmPassField: TextView = findViewById(R.id.confirmPasswordField)
@@ -56,10 +63,11 @@ class SignupActivity: AppCompatActivity() {
 
         }
 
-        //Login button
+        //Go to login activity
         btnLogin.setOnClickListener() { LogInActivity() }
     }
 
+    //Create an account with the email and password provided
     private fun createAccount(email: String, password: String) {
 
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this){ task ->

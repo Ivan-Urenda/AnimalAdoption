@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -22,13 +23,20 @@ class Forgot_pass_Activity: AppCompatActivity() {
         setContentView(R.layout.activity_forgot_pass)
         this.setTitle("Recuperar contraseña")
 
+        //Turn off dark mode
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+        //Initialize the variable to be able to use it
         firebaseAuth = Firebase.auth
 
+        //Declaration of buttons
         val btnLogin: Button = findViewById(R.id.loginAccountAfterLink)
         val btnDone: Button = findViewById(R.id.passwordResetBtn)
 
+        //Declaration of fields
         val emailField: TextView = findViewById(R.id.emailPasswordReset)
 
+        //Done button
         btnDone.setOnClickListener() {
 
             if (emailField.text.isNotEmpty())
@@ -41,9 +49,11 @@ class Forgot_pass_Activity: AppCompatActivity() {
             }
         }
 
+        //Go to login activity
         btnLogin.setOnClickListener() { LogInActivity() }
     }
 
+    //Send an email to change the password
     private fun sendPasswordReset(email: String){
 
         firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener(this) { task ->

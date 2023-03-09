@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -24,13 +25,18 @@ class LoginActivity: AppCompatActivity() {
         setContentView(R.layout.activity_login)
         this.setTitle("Iniciar Sesión")
 
+        //Turn off dark mode
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+        //Initialize the variable to be able to use it
         firebaseAuth = Firebase.auth
 
-        //Declaration of buttons and fields
+        //Declaration of buttons
         val btnLogin: Button = findViewById(R.id.btnLogin);
         val btnSignup: Button = findViewById(R.id.createAccountLink)
         val btnForgotPass: TextView = findViewById(R.id.forgotPassBtn)
 
+        //Declaration fields
         val emailField: TextView = findViewById(R.id.emailField);
         val passwordField: TextView = findViewById(R.id.passwordField);
 
@@ -47,19 +53,20 @@ class LoginActivity: AppCompatActivity() {
             }
         }
 
-        //Signup button
+        //Go to signup activity
         btnSignup.setOnClickListener() {
 
             signUpActivity()
         }
 
+        //Go to forgotPassword activity
         btnForgotPass.setOnClickListener() {
             forgotPassActivity()
         }
 
     }
 
-
+    //Redirect to home if credentials are correct
     private fun login(email: String, password: String) {
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
             if (task.isSuccessful)
