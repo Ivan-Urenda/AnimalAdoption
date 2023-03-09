@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "842588133436",
+    "project_id": "animaladoption-75721",
+    "storage_bucket": "animaladoption-75721.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842588133436:android:556ccd0d0baaca02008b39",
+        "android_client_info": {
+          "package_name": "com.urenda.animaladoption"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "842588133436-0e2quupop1n074of0ooj4ocgjlp0fhh5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwMSdYJDBJhKhnuJXsbdVBFZgS-L8QpVM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "842588133436-0e2quupop1n074of0ooj4ocgjlp0fhh5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

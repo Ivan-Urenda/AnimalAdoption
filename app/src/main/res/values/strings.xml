@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">AnimalAdoption</string>
+
+    <!--  Login/CreateAccount - START  -->
+    <string name="OlvideContra"><u>Olvidé mi contraseña</u></string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="confirm_pass_hint">Confirmar contraseña</string>
+    <string name="forgot_pass">Olvidaste tu contraseña?</string>
+    <string name="btn_login">Iniciar sesión</string>
+    <string name="btn_create_account">Crear cuenta</string>
+    <string name="register_text">O registrate abajo</string>
+    <string name="have_account_text">Ya tienes una cuenta?</string>
+    <string name="progress_loading">Cargando…</string>
+    <string name="signForm_helperText">Este campo es requerido.</string>
+    <string name="blank">&#160;</string>
+    <string name="password_dntMatch">Las contraseñas deben coincidir. Intentar otra vez.</string>
+    <string name="snackbar_dismiss">Cancelar</string>
+    <string name="email_verification">Verifique su cuenta con el correo electrónico enviado a su buzón.</string>
+    <!-- Login/CreateAccount - END  -->
 </resources>
