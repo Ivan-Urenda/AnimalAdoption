@@ -11,6 +11,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.urenda.animaladoption.R
 import com.urenda.animaladoption.ui.home.HomeActivity
+import com.urenda.animaladoption.ui.signup.SignupActivity
 
 class LoginActivity: AppCompatActivity() {
 
@@ -26,26 +27,42 @@ class LoginActivity: AppCompatActivity() {
 
         //Declaration of buttons and fields
         val btnLogin: Button = findViewById(R.id.btnLogin);
+        val btnSignup: Button = findViewById(R.id.createAccountLink)
         val emailField: TextView = findViewById(R.id.emailField);
         val passwordField: TextView = findViewById(R.id.passwordField);
 
         //Login button
         btnLogin.setOnClickListener() {
-            signIn(emailField.text.toString(), passwordField.text.toString())
+            login(emailField.text.toString(), passwordField.text.toString())
         }
+
+        //Signup button
+        btnSignup.setOnClickListener() {
+            signUpActivity()
+        }
+
     }
 
-    private fun signIn(email: String, password: String) {
+
+    private fun login(email: String, password: String) {
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
             if (task.isSuccessful)
             {
                 val homeActivity =  Intent(this, HomeActivity::class.java)
                 startActivity(homeActivity)
+                this.finish()
             }
             else
             {
                 Toast.makeText(baseContext, "Error de email y/o contraseña", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    //Redirects to SignupActivity
+    private fun signUpActivity() {
+        val signUpActivity = Intent(this, SignupActivity::class.java)
+        startActivity(signUpActivity)
+        this.finish();
     }
 }
