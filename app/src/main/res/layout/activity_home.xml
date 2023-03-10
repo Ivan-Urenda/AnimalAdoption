@@ -14,7 +14,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="152dp">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnAdd"
@@ -25,11 +25,28 @@
                 android:text="@string/AddAnimal" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnChat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="55dp"
+                android:backgroundTint="@color/green"
+                android:text="@string/chat" />
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLogout"
                 android:layout_width="206dp"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
+                android:layout_marginStart="82dp"
+                android:layout_marginEnd="83dp"
+                android:layout_marginBottom="6dp"
                 android:backgroundTint="@color/red_error"
                 android:text="@string/Logout" />
 

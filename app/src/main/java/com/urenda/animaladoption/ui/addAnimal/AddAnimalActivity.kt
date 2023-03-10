@@ -77,7 +77,8 @@ class AddAnimalActivity: AppCompatActivity() {
                 "Gender" to animalGender,
                 "Age" to animalAge.toString(),
                 "Breed" to animalBreed.toString(),
-                "Size" to animalSize
+                "Size" to animalSize,
+                "owner" to firebaseAuth.currentUser?.email.toString()
             )
 
 

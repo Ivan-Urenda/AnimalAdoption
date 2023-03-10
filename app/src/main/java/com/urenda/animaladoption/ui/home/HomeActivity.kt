@@ -14,6 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.urenda.animaladoption.R
 import com.urenda.animaladoption.ui.addAnimal.AddAnimalActivity
+import com.urenda.animaladoption.ui.chat.ListOfChatsActivity
 import com.urenda.animaladoption.ui.home.adapter.AnimalsAdapter
 import com.urenda.animaladoption.ui.home.model.Animal
 import com.urenda.animaladoption.ui.login.LoginActivity
@@ -40,6 +41,7 @@ class HomeActivity: AppCompatActivity() {
 
         //Declaration of buttons
         val btnAdd: Button = findViewById(R.id.btnAdd)
+        val btnChat: Button = findViewById(R.id.btnChat)
         val btnLogout: Button = findViewById(R.id.btnLogout)
 
         //initRecyclerView()
@@ -54,6 +56,13 @@ class HomeActivity: AppCompatActivity() {
         else
         {
             this.setTitle("Animal Adoption")
+        }
+
+        btnChat.setOnClickListener() {
+            val intent = Intent(this, ListOfChatsActivity::class.java)
+            intent.putExtra("user", firebaseAuth.currentUser?.email)
+            startActivity(intent)
+
         }
     }
 
@@ -92,7 +101,7 @@ class HomeActivity: AppCompatActivity() {
                         size = if (document["Size"].toString().equals("Big")) "Grande" else size
 
                         val animal = Animal("Edad: "+document["Age"].toString(), "Especie: "+document["Breed"].toString(), "Genero: $gender",
-                            "Raza: "+document["Kind"].toString(), document["Name"].toString(), "Tamaño: $size", document.id)
+                            "Raza: "+document["Kind"].toString(), document["Name"].toString(), "Tamaño: $size", document.id, document["owner"].toString())
                         AnimalsList.add(animal)
                     }
                     else
@@ -109,7 +118,7 @@ class HomeActivity: AppCompatActivity() {
 
 
                         val animal = Animal("Age: "+document["Age"].toString(), "Breed: "+document["Breed"].toString(), "Gender: $gender",
-                            "Kind: "+document["Kind"].toString(), document["Name"].toString(), "Size: $size", document.id)
+                            "Kind: "+document["Kind"].toString(), document["Name"].toString(), "Size: $size", document.id, document["owner"].toString())
                         AnimalsList.add(animal)
                     }
                 }

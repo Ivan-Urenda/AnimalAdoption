@@ -45,4 +45,6 @@
     <string name="done">Done</string>
     <string name="save">Save</string>
     <string name="delete">Delete</string>
+    <string name="chat">Chat</string>
+    <string name="contact">Contact</string>
 </resources>

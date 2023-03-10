@@ -1,6 +1,8 @@
 package com.urenda.animaladoption.ui.editAnimal
 
 import android.content.DialogInterface
+import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
@@ -24,6 +26,10 @@ class EditAnimalActivity: AppCompatActivity() {
     private lateinit var animalAgeField: TextView
     private lateinit var animalBreedField: TextView
     private lateinit var animalSizeSpinner: Spinner
+    private lateinit var animalContactField: TextView
+
+    private lateinit var btnAdd: Button
+    private lateinit var btnDelete: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,8 +46,8 @@ class EditAnimalActivity: AppCompatActivity() {
         firestore = FirebaseFirestore.getInstance()
 
         //Declaration of buttons
-        val btnAdd: Button = findViewById(R.id.btnSave)
-        val btnDelete: Button = findViewById(R.id.btnDelete)
+        btnAdd = findViewById(R.id.btnSave)
+        btnDelete = findViewById(R.id.btnDelete)
 
         //Declaration fields
         animalNameField = findViewById(R.id.AnimalNameField)
@@ -50,6 +56,7 @@ class EditAnimalActivity: AppCompatActivity() {
         animalAgeField = findViewById(R.id.AnimalAgeField)
         animalBreedField = findViewById(R.id.AnimalBreedField)
         animalSizeSpinner = findViewById(R.id.AnimalSizeSpinner)
+        animalContactField = findViewById(R.id.AnimalContactField)
 
         loadSpinnerGender(animalGenderSpinner)
         loadSpinnerSize(animalSizeSpinner)
@@ -67,6 +74,8 @@ class EditAnimalActivity: AppCompatActivity() {
         {
             this.setTitle("Edit Animal")
         }
+
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -93,7 +102,7 @@ class EditAnimalActivity: AppCompatActivity() {
                         size = if (document["Size"].toString().equals("Big")) "Grande" else size
 
                         val animal = Animal(document["Age"].toString(), document["Breed"].toString(), document["Gender"].toString(),
-                            document["Kind"].toString(), document["Name"].toString(), document["Size"].toString(), document.id)
+                            document["Kind"].toString(), document["Name"].toString(), document["Size"].toString(), document.id, document["owner"].toString())
 
                         setData(animal)
                     }
@@ -111,7 +120,7 @@ class EditAnimalActivity: AppCompatActivity() {
 
 
                         val animal = Animal(document["Age"].toString(), document["Breed"].toString(), gender,
-                            document["Kind"].toString(), document["Name"].toString(), size, document.id)
+                            document["Kind"].toString(), document["Name"].toString(), size, document.id, document["owner"].toString())
 
                         setData(animal)
                     }
@@ -166,6 +175,7 @@ class EditAnimalActivity: AppCompatActivity() {
                 animalSizeSpinner.setSelection(2)
             }
 
+
         }
         else
         {
@@ -193,7 +203,47 @@ class EditAnimalActivity: AppCompatActivity() {
             {
                 animalSizeSpinner.setSelection(2)
             }
+            animalContactField.text = animal.Contact
         }
+
+        animalContactField.text = animal.Contact
+        animalContactField.isEnabled = false
+        animalContactField.isCursorVisible = false
+        animalContactField.keyListener = null
+        animalContactField.setBackgroundColor(Color.TRANSPARENT)
+
+        if(!animal.Contact.equals(firebaseAuth.currentUser?.email.toString()))
+        {
+            animalNameField.isEnabled = false
+            animalNameField.isCursorVisible = false
+            animalNameField.keyListener = null
+            animalNameField.setBackgroundColor(Color.TRANSPARENT)
+
+            animalKindField.isEnabled = false
+            animalKindField.isCursorVisible = false
+            animalKindField.keyListener = null
+            animalKindField.setBackgroundColor(Color.TRANSPARENT)
+
+            animalGenderSpinner.isEnabled = false
+            animalGenderSpinner.setBackgroundColor(Color.TRANSPARENT)
+
+            animalAgeField.isEnabled = false
+            animalAgeField.isCursorVisible = false
+            animalAgeField.keyListener = null
+            animalAgeField.setBackgroundColor(Color.TRANSPARENT)
+
+            animalBreedField.isEnabled = false
+            animalBreedField.isCursorVisible = false
+            animalBreedField.keyListener = null
+            animalBreedField.setBackgroundColor(Color.TRANSPARENT)
+
+            animalSizeSpinner.isEnabled = false
+            animalSizeSpinner.setBackgroundColor(Color.TRANSPARENT)
+
+            btnAdd.isEnabled = false
+            btnDelete.isEnabled = false
+        }
+
 
     }
 

@@ -42,6 +42,16 @@
         <activity android:name=".ui.editAnimal.EditAnimalActivity">
 
         </activity>
+
+
+
+        <activity android:name=".ui.chat.ChatActivity">
+
+        </activity>
+
+        <activity android:name=".ui.chat.ListOfChatsActivity">
+
+        </activity>
     </application>
 
 </manifest>

@@ -46,4 +46,6 @@
 <string name="done">Hecho</string>
 <string name="delete">Eliminar</string>
 <string name="save">Guardar</string>
+<string name="chat">Chat</string>
+<string name="contact">Contact</string>
 </resources>
