@@ -1,9 +1,13 @@
 package com.urenda.animaladoption.ui.home.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.urenda.animaladoption.R
+import com.urenda.animaladoption.ui.editAnimal.EditAnimalActivity
 import com.urenda.animaladoption.ui.home.model.Animal
 
 class AnimalsAdapter(private val AnimalsList:List<Animal>): RecyclerView.Adapter<AnimalsViewHolder>() {
@@ -18,6 +22,13 @@ class AnimalsAdapter(private val AnimalsList:List<Animal>): RecyclerView.Adapter
 
         val item = AnimalsList[position]
         holder.render(item)
+
+        val card = holder.view.findViewById<CardView>(R.id.Cardv)
+        card.setOnClickListener() {
+            val editAnimalActivity = Intent(holder.view.context, EditAnimalActivity::class.java)
+            editAnimalActivity.putExtra("id", item.Id)
+            holder.view.context.startActivity(editAnimalActivity)
+        }
     }
 
     override fun getItemCount(): Int = AnimalsList.size

@@ -81,8 +81,18 @@ class HomeActivity: AppCompatActivity() {
                 for (document in result) {
                     if (resources.configuration.locale.language.equals("es"))
                     {
-                        val animal = Animal("Edad: "+document["Age"].toString(), "Especie: "+document["Breed"].toString(), "Genero: "+document["Gender"].toString(),
-                            "Raza: "+document["Kind"].toString(), document["Name"].toString(), "Tamaño: "+document["Size"].toString())
+                        var gender = document["Gender"].toString()
+                        var size = document["Size"].toString()
+
+                        gender = if (document["Gender"].toString().equals("Male")) "Macho" else gender
+                        gender = if (document["Gender"].toString().equals("Female")) "Hembra" else gender
+
+                        size = if (document["Size"].toString().equals("Small")) "Pequeño" else size
+                        size = if (document["Size"].toString().equals("Medium")) "Mediano" else size
+                        size = if (document["Size"].toString().equals("Big")) "Grande" else size
+
+                        val animal = Animal("Edad: "+document["Age"].toString(), "Especie: "+document["Breed"].toString(), "Genero: $gender",
+                            "Raza: "+document["Kind"].toString(), document["Name"].toString(), "Tamaño: $size", document.id)
                         AnimalsList.add(animal)
                     }
                     else
@@ -99,8 +109,7 @@ class HomeActivity: AppCompatActivity() {
 
 
                         val animal = Animal("Age: "+document["Age"].toString(), "Breed: "+document["Breed"].toString(), "Gender: $gender",
-                            "Kind: "+document["Kind"].toString(), document["Name"].toString(), "Size: $size"
-                        )
+                            "Kind: "+document["Kind"].toString(), document["Name"].toString(), "Size: $size", document.id)
                         AnimalsList.add(animal)
                     }
                 }

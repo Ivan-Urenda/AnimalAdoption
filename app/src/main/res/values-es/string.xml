@@ -44,5 +44,6 @@
 <!--  Generic texts  -->
 <string name="next">Siguiente</string>
 <string name="done">Hecho</string>
+<string name="delete">Eliminar</string>
 <string name="save">Guardar</string>
 </resources>
