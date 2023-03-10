@@ -17,6 +17,7 @@ import com.urenda.animaladoption.ui.addAnimal.AddAnimalActivity
 import com.urenda.animaladoption.ui.home.adapter.AnimalsAdapter
 import com.urenda.animaladoption.ui.home.model.Animal
 import com.urenda.animaladoption.ui.login.LoginActivity
+import java.util.*
 
 class HomeActivity: AppCompatActivity() {
 
@@ -45,6 +46,15 @@ class HomeActivity: AppCompatActivity() {
 
         btnAdd.setOnClickListener() { addAnimalActivity() }
         btnLogout.setOnClickListener() { Logout() }
+
+        if (resources.configuration.locale.language.equals("es"))
+        {
+            this.setTitle("Adopción Animal")
+        }
+        else
+        {
+            this.setTitle("Animal Adoption")
+        }
     }
 
     //Redirects to AddAnimalActivity
@@ -69,9 +79,30 @@ class HomeActivity: AppCompatActivity() {
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    val animal = Animal("Edad: "+document["Age"].toString(), "Especie: "+document["Breed"].toString(), "Genero: "+document["Gender"].toString(),
-                        "Raza: "+document["Kind"].toString(), document["Name"].toString(), "Tamaño: "+document["Size"].toString())
-                    AnimalsList.add(animal)
+                    if (resources.configuration.locale.language.equals("es"))
+                    {
+                        val animal = Animal("Edad: "+document["Age"].toString(), "Especie: "+document["Breed"].toString(), "Genero: "+document["Gender"].toString(),
+                            "Raza: "+document["Kind"].toString(), document["Name"].toString(), "Tamaño: "+document["Size"].toString())
+                        AnimalsList.add(animal)
+                    }
+                    else
+                    {
+                        var gender = document["Gender"].toString()
+                        var size = document["Size"].toString()
+
+                        gender = if (document["Gender"].toString().equals("Macho")) "Male" else gender
+                        gender = if (document["Gender"].toString().equals("Hembra")) "Female" else gender
+
+                        size = if (document["Size"].toString().equals("Pequeño")) "Small" else size
+                        size = if (document["Size"].toString().equals("Mediano")) "Medium" else size
+                        size = if (document["Size"].toString().equals("Grande")) "Big" else size
+
+
+                        val animal = Animal("Age: "+document["Age"].toString(), "Breed: "+document["Breed"].toString(), "Gender: $gender",
+                            "Kind: "+document["Kind"].toString(), document["Name"].toString(), "Size: $size"
+                        )
+                        AnimalsList.add(animal)
+                    }
                 }
                 val recyclerView = findViewById<RecyclerView>(R.id.reciclerViewAnimals)
                 recyclerView.layoutManager = LinearLayoutManager(this)

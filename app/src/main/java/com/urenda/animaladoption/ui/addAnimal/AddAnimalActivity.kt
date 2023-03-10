@@ -22,7 +22,6 @@ class AddAnimalActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_addanimal)
-        this.setTitle("Agregar Animal")
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         //Turn off dark mode
@@ -47,6 +46,15 @@ class AddAnimalActivity: AppCompatActivity() {
         loadSpinnerSize(animalSizeSpinner)
 
         btnAdd.setOnClickListener() { saveAnimal(animalNameField, animalKindField, animalGenderSpinner, animalAgeField, animalBreedField, animalSizeSpinner) }
+
+        if (resources.configuration.locale.language.equals("es"))
+        {
+            this.setTitle("Agregar Animal")
+        }
+        else
+        {
+            this.setTitle("Add Animal")
+        }
     }
 
     private fun saveAnimal(animalNameField: TextView, animalKindField: TextView, animalGenderSpinner: Spinner,
@@ -75,32 +83,47 @@ class AddAnimalActivity: AppCompatActivity() {
 
             firestore.collection("animals").add(animal).addOnSuccessListener { documentReference ->
 
-                Toast.makeText(baseContext, "Animal agregado correctamente", Toast.LENGTH_SHORT).show()
+                if (resources.configuration.locale.language.equals("es"))
+                {
+                    Toast.makeText(baseContext, "Animal agregado correctamente", Toast.LENGTH_SHORT).show()
+                }
+                else
+                {
+                    Toast.makeText(baseContext, "Animal added successfully", Toast.LENGTH_SHORT).show()
+                }
+
 
                 this.finish()
             }
             .addOnFailureListener { e ->
-                Toast.makeText(baseContext, "Ha ocurrido un error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(baseContext, "Error", Toast.LENGTH_SHORT).show()
             }
         }
         else
         {
-            Toast.makeText(baseContext, "Uno o más campos vacíos", Toast.LENGTH_SHORT).show()
+            if (resources.configuration.locale.language.equals("es"))
+            {
+                Toast.makeText(baseContext, "Uno o más campos vacíos", Toast.LENGTH_SHORT).show()
+            }
+            else
+            {
+                Toast.makeText(baseContext, "One or more empty fields", Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
 
 
     private fun loadSpinnerGender(spinner: Spinner){
-        val list = listOf("Macho", "Hembra")
 
+        val list = if(resources.configuration.locale.language.equals("es")) listOf("Macho", "Hembra") else listOf("Male", "Female")
         val adapter = ArrayAdapter(this, R.layout.spinner_items, list)
         spinner.adapter = adapter
     }
 
     private fun loadSpinnerSize(spinner: Spinner){
-        val list = listOf("Pequeño", "Mediano", "Grande")
 
+        val list = if(resources.configuration.locale.language.equals("es")) listOf("Pequeño", "Mediano", "Grande") else listOf("Small", "Medium", "Big")
         val adapter = ArrayAdapter(this, R.layout.spinner_items, list)
         spinner.adapter = adapter
     }

@@ -37,7 +37,7 @@
                     android:layout_width="221dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Nombre"
+                    android:text="@string/Name"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -47,16 +47,16 @@
                     android:layout_width="221dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Edad"
+                    android:text="@string/Age"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/AnimalBreed"
+                    android:id="@+id/AnimalGender"
                     android:layout_width="221dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Raza"
+                    android:text="@string/Gender"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -65,7 +65,7 @@
                     android:layout_width="221dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Tamaño"
+                    android:text="@string/Size"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 

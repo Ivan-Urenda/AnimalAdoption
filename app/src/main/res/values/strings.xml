@@ -2,31 +2,46 @@
     <string name="app_name">AnimalAdoption</string>
 
     <!--  Login/CreateAccount - START  -->
-    <string name="OlvideContra"><u>Olvidé mi contraseña</u></string>
-    <string name="email_hint">Correo</string>
-    <string name="password_hint">Contraseña</string>
-    <string name="confirm_pass_hint">Confirmar contraseña</string>
-    <string name="forgot_pass">¿Olvidaste tu contraseña?</string>
-    <string name="btn_login">Iniciar sesión</string>
-    <string name="btn_create_account">Crear cuenta</string>
-    <string name="register_text">Registrate abajo</string>
-    <string name="have_account_text">¿Ya tienes una cuenta?</string>
-    <string name="progress_loading">Cargando…</string>
-    <string name="signForm_helperText">Este campo es requerido.</string>
+    <string name="OlvideContra"><u>Forgot my password</u></string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="confirm_pass_hint">Confirm password</string>
+    <string name="forgot_pass">Forgot password?</string>
+    <string name="btn_login">Login</string>
+    <string name="btn_create_account">Create Account</string>
+    <string name="register_text">Or register below</string>
+    <string name="have_account_text">Do you already have an account?</string>
+    <string name="progress_loading">Loading…</string>
+    <string name="signForm_helperText">This field is required.</string>
     <string name="blank">&#160;</string>
-    <string name="password_dntMatch">Las contraseñas deben coincidir. Intentar otra vez.</string>
-    <string name="snackbar_dismiss">Cancelar</string>
-    <string name="email_verification">Verifique su cuenta con el correo electrónico enviado a su buzón.</string>
+    <string name="password_dntMatch">Passwords must match. Try again.</string>
+    <string name="snackbar_dismiss">Cancel</string>
+    <string name="email_verification">Verify your account with the email sent to your mailbox.</string>
     <!-- Login/CreateAccount - END  -->
 
     <!--  Forgot Password Activity - START  -->
-    <string name="recover_account">Recupera tu cuenta</string>
-    <string name="new_password_hint">Nueva contraseña</string>
-    <string name="confirm_new_password_hint">Confirmar nueva contraseña</string>
-    <string name="try_login_divider_forget_pass">Intente iniciar sesión después de restablecer su contraseña.</string>
+    <string name="recover_account">Recover Your Account</string>
+    <string name="new_password_hint">New Password</string>
+    <string name="confirm_new_password_hint">confirm new password</string>
+    <string name="try_login_divider_forget_pass">Please try to sign in after resetting your password.</string>
     <!--  Forgot Password Activity - END  -->
 
+    <!--  Forgot AddAnimal Activity - START  -->
+    <string name="Name">Name</string>
+    <string name="Kind">Kind</string>
+    <string name="Gender">Gender</string>
+    <string name="Age">Age</string>
+    <string name="Breed">Breed</string>
+    <string name="Size">Size</string>
+    <!--  Forgot AddAnimal Activity - END  -->
+
+    <!--  Forgot AddAnimal Activity - START  -->
+    <string name="AddAnimal">Add animal</string>
+    <string name="Logout">Logout</string>
+    <!--  Forgot AddAnimal Activity - END  -->
+
     <!--  Generic texts  -->
-    <string name="next">Siguiente</string>
-    <string name="done">Hecho</string>
+    <string name="next">Next</string>
+    <string name="done">Done</string>
+    <string name="save">Save</string>
 </resources>

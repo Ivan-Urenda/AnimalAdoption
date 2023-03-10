@@ -21,7 +21,6 @@ class SignupActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
-        this.setTitle("Registrarse")
 
         //Turn off dark mode
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -65,6 +64,15 @@ class SignupActivity: AppCompatActivity() {
 
         //Go to login activity
         btnLogin.setOnClickListener() { LogInActivity() }
+
+        if (resources.configuration.locale.language.equals("es"))
+        {
+            this.setTitle("Registrarse")
+        }
+        else
+        {
+            this.setTitle("Signin")
+        }
     }
 
     //Create an account with the email and password provided
@@ -78,7 +86,14 @@ class SignupActivity: AppCompatActivity() {
             }
             else
             {
-                Toast.makeText(baseContext, "Ha ocurrido un error al crear la cuenta", Toast.LENGTH_SHORT).show()
+                if (resources.configuration.locale.language.equals("es"))
+                {
+                    Toast.makeText(baseContext, "Ha ocurrido un error al crear la cuenta", Toast.LENGTH_SHORT).show()
+                }
+                else
+                {
+                    Toast.makeText(baseContext, "An error occurred while creating the account", Toast.LENGTH_SHORT).show()
+                }
             }
 
         }
@@ -97,12 +112,27 @@ class SignupActivity: AppCompatActivity() {
         user!!.sendEmailVerification().addOnCompleteListener(this) {  task ->
             if (task.isSuccessful)
             {
-                Toast.makeText(baseContext, "Correo de verificación enviado", Toast.LENGTH_SHORT).show()
+                if (resources.configuration.locale.language.equals("es"))
+                {
+                    Toast.makeText(baseContext, "Correo de verificación enviado", Toast.LENGTH_SHORT).show()
+                }
+                else
+                {
+                    Toast.makeText(baseContext, "Verification email sent", Toast.LENGTH_SHORT).show()
+                }
                 LogInActivity()
             }
             else
             {
-                Toast.makeText(baseContext, "Ha ocurrido un error al enviar el correo de verificación", Toast.LENGTH_SHORT).show()
+                if (resources.configuration.locale.language.equals("es"))
+                {
+                    Toast.makeText(baseContext, "Ha ocurrido un error al enviar el correo de verificación", Toast.LENGTH_SHORT).show()
+                }
+                else
+                {
+                    Toast.makeText(baseContext, "An error occurred while sending the verification email", Toast.LENGTH_SHORT).show()
+                }
+
             }
         }
     }

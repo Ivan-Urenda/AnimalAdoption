@@ -21,7 +21,7 @@ class Forgot_pass_Activity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot_pass)
-        this.setTitle("Recuperar contraseña")
+
 
         //Turn off dark mode
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -45,12 +45,29 @@ class Forgot_pass_Activity: AppCompatActivity() {
             }
             else
             {
-                Toast.makeText(baseContext, "El campo de correo no puede estar vacío", Toast.LENGTH_SHORT).show()
+                if (resources.configuration.locale.language.equals("es"))
+                {
+                    Toast.makeText(baseContext, "El campo de correo no puede estar vacío", Toast.LENGTH_SHORT).show()
+                }
+                else
+                {
+                    Toast.makeText(baseContext, "The mail field cannot be empty", Toast.LENGTH_SHORT).show()
+                }
+
             }
         }
 
         //Go to login activity
         btnLogin.setOnClickListener() { LogInActivity() }
+
+        if (resources.configuration.locale.language.equals("es"))
+        {
+            this.setTitle("Recuperar contraseña")
+        }
+        else
+        {
+            this.setTitle("Recover password")
+        }
     }
 
     //Send an email to change the password
@@ -60,12 +77,26 @@ class Forgot_pass_Activity: AppCompatActivity() {
 
             if (task.isSuccessful)
             {
-                Toast.makeText(baseContext, "¡Correo de cambio de contraseña enviado!", Toast.LENGTH_SHORT).show()
+                if (resources.configuration.locale.language.equals("es"))
+                {
+                    Toast.makeText(baseContext, "¡Correo de cambio de contraseña enviado!", Toast.LENGTH_SHORT).show()
+                }
+                else
+                {
+                    Toast.makeText(baseContext, "Password change email sent!", Toast.LENGTH_SHORT).show()
+                }
                 LogInActivity()
             }
             else
             {
-                Toast.makeText(baseContext, "Correo no registrado", Toast.LENGTH_SHORT).show()
+                if (resources.configuration.locale.language.equals("es"))
+                {
+                    Toast.makeText(baseContext, "Correo no registrado", Toast.LENGTH_SHORT).show()
+                }
+                else
+                {
+                    Toast.makeText(baseContext, "Email not found", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
