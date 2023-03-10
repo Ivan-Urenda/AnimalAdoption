@@ -9,6 +9,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.urenda.animaladoption.R
+import com.urenda.animaladoption.ui.home.HomeActivity
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -75,6 +76,7 @@ class AddAnimalActivity: AppCompatActivity() {
             firestore.collection("animals").add(animal).addOnSuccessListener { documentReference ->
 
                 Toast.makeText(baseContext, "Animal agregado correctamente", Toast.LENGTH_SHORT).show()
+
                 this.finish()
             }
             .addOnFailureListener { e ->

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="16dp"
+    android:layout_margin="16dp"
+    android:id="@+id/Cardv"
+    android:clickable="true">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnCount="2">
+
+            <ImageView
+                android:id="@+id/AnimalImage"
+                android:layout_width="140dp"
+                android:layout_height="128dp"
+                android:background="@drawable/logo"
+                android:scaleType="centerCrop" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:columnCount="1">
+
+                <TextView
+                    android:id="@+id/AnimalName"
+                    android:layout_width="221dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Nombre"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/AnimalAge"
+                    android:layout_width="221dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Edad"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/AnimalBreed"
+                    android:layout_width="221dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Raza"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/AnimalSize"
+                    android:layout_width="221dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Tamaño"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+            </GridLayout>
+
+        </GridLayout>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
