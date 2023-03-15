@@ -22,7 +22,6 @@ class AnimalsViewHolder(val view:View): RecyclerView.ViewHolder(view) {
     val animalAge = view.findViewById<TextView>(R.id.AnimalAge)
     val animalGender = view.findViewById<TextView>(R.id.AnimalGender)
     val animalSize = view.findViewById<TextView>(R.id.AnimalSize)
-    //val card = view.findViewById<CardView>(R.id.Cardv)
 
     fun render(animalModel: Animal) {
 
@@ -30,12 +29,6 @@ class AnimalsViewHolder(val view:View): RecyclerView.ViewHolder(view) {
         animalAge.text = animalModel.Age
         animalGender.text = animalModel.Gender
         animalSize.text = animalModel.Size
-
-       // card.setOnClickListener() {
-       //     val editAnimalActivity = Intent(view.context, EditAnimalActivity::class.java)
-        //    view.context.startActivity(editAnimalActivity)
-        //    editAnimalActivity.putExtra("id", animalModel.Name)
-        //}
     }
 
 

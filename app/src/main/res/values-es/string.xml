@@ -18,6 +18,7 @@
 <string name="password_dntMatch">Las contraseñas deben coincidir. Intentar otra vez.</string>
 <string name="snackbar_dismiss">Cancelar</string>
 <string name="email_verification">Verifique su cuenta con el correo electrónico enviado a su buzón.</string>
+<string name="administrator_check">Administrador</string>
 <!-- Login/CreateAccount - END  -->
 
 <!--  Forgot Password Activity - START  -->

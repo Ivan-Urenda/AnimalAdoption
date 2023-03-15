@@ -49,6 +49,9 @@ class EditAnimalActivity: AppCompatActivity() {
         btnAdd = findViewById(R.id.btnSave)
         btnDelete = findViewById(R.id.btnDelete)
 
+        btnAdd.isEnabled = false
+        btnDelete.isEnabled = false
+
         //Declaration fields
         animalNameField = findViewById(R.id.AnimalNameField)
         animalKindField = findViewById(R.id.AnimalKindField)
@@ -75,7 +78,7 @@ class EditAnimalActivity: AppCompatActivity() {
             this.setTitle("Edit Animal")
         }
 
-
+        isAdministrator()
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -348,5 +351,19 @@ class EditAnimalActivity: AppCompatActivity() {
                 setNegativeButton("No", null)
             }.show()
         }
+    }
+
+    private fun isAdministrator() {
+
+        firestore.collection("usersRol").document(firebaseAuth.currentUser?.email.toString()).get()
+            .addOnSuccessListener { result ->
+                val admin = result.data?.get("Administrator") as Boolean
+
+                if (admin)
+                {
+                    btnAdd.isEnabled = true
+                    btnDelete.isEnabled = true
+                }
+            }
     }
 }

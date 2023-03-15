@@ -23,10 +23,14 @@ class AnimalsAdapter(private val AnimalsList:List<Animal>): RecyclerView.Adapter
         val item = AnimalsList[position]
         holder.render(item)
 
+        //A listener is set to the card to edit the animal
         val card = holder.view.findViewById<CardView>(R.id.Cardv)
         card.setOnClickListener() {
             val editAnimalActivity = Intent(holder.view.context, EditAnimalActivity::class.java)
+
+            //The id of the animal (id of the document) is passed
             editAnimalActivity.putExtra("id", item.Id)
+
             holder.view.context.startActivity(editAnimalActivity)
         }
     }

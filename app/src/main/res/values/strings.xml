@@ -17,6 +17,7 @@
     <string name="password_dntMatch">Passwords must match. Try again.</string>
     <string name="snackbar_dismiss">Cancel</string>
     <string name="email_verification">Verify your account with the email sent to your mailbox.</string>
+    <string name="administrator_check">Administrator</string>
     <!-- Login/CreateAccount - END  -->
 
     <!--  Forgot Password Activity - START  -->

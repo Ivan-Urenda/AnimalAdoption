@@ -26,6 +26,7 @@ class HomeActivity: AppCompatActivity() {
     private lateinit var authStateListener: FirebaseAuth.AuthStateListener
     private lateinit var firestore: FirebaseFirestore
     private lateinit var AnimalsList: MutableList<Animal>
+    private lateinit var btnAdd: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,9 +41,11 @@ class HomeActivity: AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         //Declaration of buttons
-        val btnAdd: Button = findViewById(R.id.btnAdd)
+        btnAdd = findViewById(R.id.btnAdd)
         val btnChat: Button = findViewById(R.id.btnChat)
         val btnLogout: Button = findViewById(R.id.btnLogout)
+
+        btnAdd.isEnabled = false
 
         //initRecyclerView()
 
@@ -64,6 +67,9 @@ class HomeActivity: AppCompatActivity() {
             startActivity(intent)
 
         }
+
+        isAdministrator()
+
     }
 
     //Redirects to AddAnimalActivity
@@ -78,6 +84,20 @@ class HomeActivity: AppCompatActivity() {
         val loginActivity = Intent(this, LoginActivity::class.java)
         startActivity(loginActivity)
         this.finish()
+    }
+
+    private fun isAdministrator() {
+
+
+        firestore.collection("usersRol").document(firebaseAuth.currentUser?.email.toString()).get()
+            .addOnSuccessListener { result ->
+                val admin = result.data?.get("Administrator") as Boolean
+
+                if (admin)
+                {
+                    btnAdd.isEnabled = true
+                }
+            }
     }
 
     private fun initRecyclerView() {
